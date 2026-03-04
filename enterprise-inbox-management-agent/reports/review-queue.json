@@ -1,0 +1,40 @@
+[
+  {
+    "message_id": "msg_001",
+    "subject": "Cannot access admin dashboard",
+    "sender": "alice@clientco.com",
+    "policy_decision": "REQUIRE_REVIEW",
+    "policy_reason": "High-risk intent requires elevated confidence or human approval.",
+    "intent_label": "access_request",
+    "priority_label": "high",
+    "confidence": 0.78,
+    "proposed_actions": [
+      {
+        "tool_name": "create_task",
+        "args": {
+          "queue": "it-access",
+          "severity": "high"
+        }
+      }
+    ]
+  },
+  {
+    "message_id": "msg_004",
+    "subject": "App is not working after update",
+    "sender": "it@customer.org",
+    "policy_decision": "REQUIRE_REVIEW",
+    "policy_reason": "High-risk intent requires elevated confidence or human approval.",
+    "intent_label": "access_request",
+    "priority_label": "high",
+    "confidence": 0.78,
+    "proposed_actions": [
+      {
+        "tool_name": "create_task",
+        "args": {
+          "queue": "it-access",
+          "severity": "high"
+        }
+      }
+    ]
+  }
+]

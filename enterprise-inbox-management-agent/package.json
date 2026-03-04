@@ -1,0 +1,32 @@
+{
+  "name": "enterprise-inbox-workflow-agent",
+  "version": "0.1.0",
+  "description": "Business-first applied AI project that converts high-volume enterprise inbox traffic into reliable, auditable workflow execution.",
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "dev": "tsx src/main.ts",
+    "demo": "tsx src/demo.ts",
+    "eval": "tsx src/evaluate.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js",
+    "test": "node --import tsx --test test/**/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "workflow",
+    "automation"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

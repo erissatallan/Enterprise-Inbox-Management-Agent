@@ -1,0 +1,11 @@
+{
+  "sample_count": 12,
+  "intent_accuracy": 91.67,
+  "priority_accuracy": 100,
+  "action_correctness": 100,
+  "policy_accuracy": 91.67,
+  "review_rate": 58.33,
+  "auto_execute_rate": 41.67,
+  "deny_rate": 0,
+  "generated_at": "2026-03-04T05:34:13.975Z"
+}
