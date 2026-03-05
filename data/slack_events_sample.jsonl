@@ -1,0 +1,3 @@
+{"channel_id":"C12345","channel_name":"client-success","ts":"1719930100","user_email":"success@clientco.com","text":"Can your team grant dashboard access to our new analyst by EOD?","thread_summary":"Access request for new analyst"}
+{"channel_id":"C12345","channel_name":"client-success","ts":"1719930200","user_email":"ops@clientco.com","text":"We noticed duplicate charges in this month invoice. Please investigate billing.","thread_summary":"Billing discrepancy"}
+{"channel_id":"C77890","channel_name":"product-issues","ts":"1719930300","user_email":"it@enterprise.org","text":"Login is broken after latest deployment. Multiple users blocked.","thread_summary":"Production login incident"}

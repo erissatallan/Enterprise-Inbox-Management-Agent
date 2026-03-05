@@ -1,0 +1,92 @@
+{
+  "generated_at": "2026-03-04T16:49:12.649Z",
+  "business_handoff_mode": "mock",
+  "ticketing_provider": "jira",
+  "crm_provider": "hubspot",
+  "results": [
+    {
+      "message_id": "msg_001",
+      "intent_label": "access_request",
+      "priority_label": "high",
+      "confidence": 0.78,
+      "policy_decision": "REQUIRE_REVIEW",
+      "policy_reason": "High-risk intent requires elevated confidence or human approval.",
+      "proposed_actions": [
+        {
+          "tool_name": "create_task",
+          "args": {
+            "queue": "it-access",
+            "severity": "high"
+          }
+        }
+      ],
+      "tool_results": []
+    },
+    {
+      "message_id": "msg_002",
+      "intent_label": "billing_question",
+      "priority_label": "medium",
+      "confidence": 0.83,
+      "policy_decision": "AUTO_EXECUTE",
+      "policy_reason": "Confidence above auto-execute threshold.",
+      "proposed_actions": [
+        {
+          "tool_name": "update_record",
+          "args": {
+            "queue": "billing",
+            "status": "open"
+          }
+        }
+      ],
+      "tool_results": [
+        {
+          "tool_name": "update_record",
+          "ok": true,
+          "detail": "CRM updated via hubspot ref=HUBSPOT-msg_002 status=open"
+        }
+      ]
+    },
+    {
+      "message_id": "msg_003",
+      "intent_label": "onboarding_request",
+      "priority_label": "medium",
+      "confidence": 0.82,
+      "policy_decision": "AUTO_EXECUTE",
+      "policy_reason": "Confidence above auto-execute threshold.",
+      "proposed_actions": [
+        {
+          "tool_name": "create_task",
+          "args": {
+            "queue": "onboarding",
+            "severity": "medium"
+          }
+        }
+      ],
+      "tool_results": [
+        {
+          "tool_name": "create_task",
+          "ok": true,
+          "detail": "Ticket created via jira ref=JIRA-msg_003 queue=onboarding"
+        }
+      ]
+    },
+    {
+      "message_id": "msg_004",
+      "intent_label": "access_request",
+      "priority_label": "high",
+      "confidence": 0.78,
+      "policy_decision": "REQUIRE_REVIEW",
+      "policy_reason": "High-risk intent requires elevated confidence or human approval.",
+      "proposed_actions": [
+        {
+          "tool_name": "create_task",
+          "args": {
+            "queue": "it-access",
+            "severity": "high"
+          }
+        }
+      ],
+      "tool_results": []
+    }
+  ]
+}

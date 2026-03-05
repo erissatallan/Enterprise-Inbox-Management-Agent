@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-03-04T16:49:13.326Z",
+  "metrics": {
+    "total": 2,
+    "approved": 1,
+    "rejected": 0,
+    "pending": 1,
+    "approval_rate": 50,
+    "rejection_rate": 0,
+    "pending_rate": 50
+  },
+  "rows": [
+    {
+      "message_id": "msg_001",
+      "status": "APPROVED",
+      "reviewer": "ops_lead",
+      "decided_at": "2026-03-04T16:49:13.105Z"
+    },
+    {
+      "message_id": "msg_004",
+      "status": "PENDING"
+    }
+  ]
+}

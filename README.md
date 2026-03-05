@@ -4,13 +4,18 @@ Business-first applied AI project that converts high-volume enterprise inbox tra
 
 ## Current status
 
-Cycle 1 includes:
+Cycle 1 + Cycle 2 now include:
 - JSONL inbox ingestion and normalization
 - intent/priority/action decision engine (heuristic baseline)
 - policy gating (`AUTO_EXECUTE`, `REQUIRE_REVIEW`, `DENY`)
 - mock tool execution with audit logging
 - evaluation harness with reproducible metrics
 - demo/review queue artifacts for portfolio walkthroughs
+- offline channel adapters for Slack events and email threads
+- Slack live webhook integration with request signature verification
+- Gmail live ingestion runner with mock/live API mode
+- ticketing and CRM business handoff adapters
+- explicit human review state workflow (`PENDING`, `APPROVED`, `REJECTED`)
 
 ## Quick start
 
@@ -23,6 +28,13 @@ Useful commands:
 - `npm run typecheck`
 - `npm run test`
 - `npm run demo`
+- `npm run demo:channels`
+- `npm run slack:live`
+- `npm run gmail:live`
+- `npm run demo:handoff`
+- `npm run demo:review`
+- `npm run review:decide`
+- `npm run review:metrics`
 - `npm run eval`
 - `npm run build`
 
@@ -30,30 +42,34 @@ Useful commands:
 
 ```bash
 npm run demo
+npm run demo:channels
+npm run gmail:live
+npm run demo:handoff
+npm run demo:review
+npm run review:metrics
 npm run eval
 ```
 
 Outputs:
 - Demo summary: `reports/demo-summary.md`
 - Review queue report: `reports/review-queue.md`
-- Review queue payload: `reports/review-queue.json`
+- Channel integration demo: `reports/channel-integration-demo.md`
+- Gmail integration demo: `reports/gmail-live-demo.md`
+- Business handoff demo: `reports/handoff-demo.md`
+- Review workflow: `reports/review-workflow.md`
+- Review metrics: `reports/review-metrics.md`
 - Evaluation report: `reports/eval-report.md`
-- Evaluation metrics JSON: `reports/eval-report.json`
-- Audit trace: `logs/audit.jsonl`
 
 ## Project structure
 
-- `src/`: runnable MVP modules
-- `src/evaluate.ts`: evaluation harness
-- `src/demo.ts`: demo artifact generator
-- `src/review-report.ts`: review queue report generator
-- `data/messages_sample.jsonl`: sample inbox events
-- `data/messages_val.jsonl`: labeled validation set
-- `docs/ARCHITECTURE.md`: architecture details and contracts
-- `docs/ARCHITECTURE_DIAGRAM.md`: Mermaid architecture diagram
-- `docs/DECISION_EXAMPLES.md`: concrete decision traces
-- `docs/DEMO_RUNBOOK.md`: short demo script
+- `src/slack-live-server.ts`: live Slack webhook ingestion server
+- `src/gmail-live-runner.ts`: Gmail ingestion runner
+- `src/integrations-business-handoff.ts`: ticketing/CRM adapter layer
+- `src/review-workflow.ts`: human review state and metrics model
+- `docs/CODE_EXECUTION_PATH.md`: non-technical execution walkthrough
+- `docs/INSTALLATION_TUTORIAL.md`: non-technical workplace setup by integration platform
+- `docs/CYCLE2_IMPLEMENTATION_PLAN.md`: ordered cycle plan and done criteria
 
-## MVP boundary (cycle 1)
+## MVP boundary
 
-Use synthetic inbox events only. Keep connectors modular so Gmail/Outlook/Slack/Jira/CRM integrations can be added in cycle 2.
+Use synthetic inbox events in this repository. Keep connectors modular so Slack/Gmail/Outlook/Jira/CRM live adapters can be added with limited core changes.

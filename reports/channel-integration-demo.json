@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-03-04T16:49:12.169Z",
+  "channels": [
+    {
+      "channel": "slack",
+      "total": 3,
+      "auto_execute": 1,
+      "require_review": 2,
+      "deny": 0
+    },
+    {
+      "channel": "email",
+      "total": 3,
+      "auto_execute": 2,
+      "require_review": 1,
+      "deny": 0
+    }
+  ]
+}

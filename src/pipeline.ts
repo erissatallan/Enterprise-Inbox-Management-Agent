@@ -62,7 +62,7 @@ export async function processMessage(
 
   const toolResults: ToolExecutionResult[] = [];
   for (const action of decision.proposed_actions) {
-    const result = await executeToolAction(action);
+    const result = await executeToolAction(action, message.message_id);
     toolResults.push(result);
     await writeAuditEntry(auditPath, {
       message_id: message.message_id,
