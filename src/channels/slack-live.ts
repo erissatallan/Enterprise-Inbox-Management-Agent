@@ -95,6 +95,39 @@ export function slackLiveEventToInboundMessage(event: SlackEventCallback["event"
   });
 }
 
+type SlackApiResponse<T extends Record<string, unknown> = Record<string, unknown>> = T & {
+  ok?: boolean;
+  error?: string;
+};
+
+async function slackApiPost<T extends Record<string, unknown>>(
+  method: string,
+  params: {
+    botToken?: string;
+    body: Record<string, unknown>;
+  },
+): Promise<SlackApiResponse<T>> {
+  if (!params.botToken) {
+    throw new Error("Missing SLACK_BOT_TOKEN for live outbound mode.");
+  }
+
+  const response = await fetch(`https://slack.com/api/${method}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${params.botToken}`,
+      "Content-Type": "application/json; charset=utf-8",
+    },
+    body: JSON.stringify(params.body),
+  });
+
+  const payload = (await response.json()) as SlackApiResponse<T>;
+  if (!response.ok || !payload.ok) {
+    throw new Error(`Slack ${method} failed: status=${response.status} error=${payload.error ?? "unknown"}`);
+  }
+
+  return payload;
+}
+
 export async function sendSlackMessage(params: {
   channel: string;
   text: string;
@@ -107,26 +140,45 @@ export async function sendSlackMessage(params: {
     return;
   }
 
-  if (!params.botToken) {
-    throw new Error("Missing SLACK_BOT_TOKEN for live outbound mode.");
-  }
-
-  const response = await fetch("https://slack.com/api/chat.postMessage", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${params.botToken}`,
-      "Content-Type": "application/json; charset=utf-8",
-    },
-    body: JSON.stringify({
+  await slackApiPost("chat.postMessage", {
+    botToken: params.botToken,
+    body: {
       channel: params.channel,
       text: params.text,
       thread_ts: params.threadTs,
-    }),
+    },
+  });
+}
+
+export async function sendSlackDirectMessage(params: {
+  userId: string;
+  text: string;
+  mode: "mock" | "live";
+  botToken?: string;
+}): Promise<void> {
+  if (params.mode === "mock") {
+    console.log(`[SLACK MOCK DM] user=${params.userId} text=${params.text}`);
+    return;
+  }
+
+  const opened = await slackApiPost<{ channel?: { id?: string } }>("conversations.open", {
+    botToken: params.botToken,
+    body: {
+      users: params.userId,
+      return_im: true,
+    },
   });
 
-  const payload = (await response.json()) as { ok?: boolean; error?: string };
-
-  if (!response.ok || !payload.ok) {
-    throw new Error(`Slack post failed: status=${response.status} error=${payload.error ?? "unknown"}`);
+  const dmChannelId = opened.channel?.id;
+  if (!dmChannelId) {
+    throw new Error(`Slack conversations.open returned no DM channel for user ${params.userId}.`);
   }
+
+  await slackApiPost("chat.postMessage", {
+    botToken: params.botToken,
+    body: {
+      channel: dmChannelId,
+      text: params.text,
+    },
+  });
 }

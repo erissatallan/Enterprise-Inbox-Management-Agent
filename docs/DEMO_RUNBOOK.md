@@ -3,20 +3,41 @@
 ## Command
 
 ```bash
-npm run demo
-npm run eval
+SLACK_OUTBOUND_MODE=live npm run slack:live
 ```
 
-## Present in this order
+## Live Slack Portfolio Capture (recommended order)
 
-1. Open `reports/demo-summary.md` for the before/after operations story.
-2. Open `reports/review-queue.md` to show governance and human-review routing.
-3. Open `logs/audit.jsonl` and highlight `decision`, `policy`, and `tool_execution` events.
-4. Open `reports/eval-report.md` and present baseline metrics.
+1. Post an auto-execute message in Slack (billing style):
+- Example: `We noticed duplicate charges in this month invoice. Please investigate billing.`
+
+2. Capture thread response that includes record evidence:
+- Look for `Handled automatically` plus `Evidence=CRM updated ... record_id=... ref=...`
+
+3. Capture local CRM update ledger proof (works in mock handoff mode too):
+```bash
+tail -n 5 logs/mock-crm-updates.jsonl
+```
+
+4. Post a review-worthy message in Slack:
+- Example: `Can the external audit team get time with our finance department next week?`
+
+5. Capture thread response that shows human-routing:
+- First reply: `Routed to human review...`
+- Second reply: `Escalation: notified <@USER_ID> ...`
+- Also capture one DM window proving reviewer notification delivery
+
+6. Capture audit proof in terminal:
+```bash
+rg -n "tool_execution|policy|decision" logs/audit-slack-live.jsonl | tail -n 20
+```
+
+7. Capture infrastructure proof (optional):
+- ngrok 200 responses or server logs while Slack events arrive
 
 ## Demo narrative
 
 - Start with operational pain: all requests manually triaged.
-- Show controlled autonomy: low-risk/high-confidence requests auto-execute.
-- Show governance: high-risk or uncertain requests go to review with clear reasons.
-- End with measurable value: accuracy and review-rate metrics.
+- Show controlled autonomy: low-risk/high-confidence requests auto-execute with a traceable reference.
+- Show governance: uncertain requests route to human review and explicitly notify accountable owners.
+- End with measurable value: reduced response time plus auditable controls.

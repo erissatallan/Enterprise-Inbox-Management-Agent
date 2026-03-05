@@ -49,7 +49,7 @@ export async function executeToolAction(action: ToolAction, messageId = "unknown
       return {
         tool_name: action.tool_name,
         ok: true,
-        detail: `CRM updated via ${handoff.provider} ref=${handoff.reference} status=${status}`,
+        detail: `CRM updated via ${handoff.provider} record_id=${handoff.recordId} ref=${handoff.reference} status=${status}`,
       };
     }
     default:

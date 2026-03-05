@@ -13,6 +13,7 @@
     "review:decide": "tsx src/review-decide.ts",
     "review:metrics": "tsx src/review-metrics.ts",
     "slack:live": "tsx src/slack-live-server.ts",
+    "slack:test": "tsx src/slack-test-request.ts",
     "gmail:live": "tsx src/gmail-live-runner.ts",
     "eval": "tsx src/evaluate.ts",
     "build": "tsc -p tsconfig.json",

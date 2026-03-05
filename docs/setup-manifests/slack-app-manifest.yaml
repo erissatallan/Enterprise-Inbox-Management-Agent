@@ -15,6 +15,7 @@ oauth_config:
       - im:history
       - mpim:history
       - chat:write
+      - conversations:write
 settings:
   event_subscriptions:
     request_url: https://YOUR_HOST/slack/events
