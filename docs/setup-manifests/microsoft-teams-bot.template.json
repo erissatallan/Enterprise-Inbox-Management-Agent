@@ -1,0 +1,17 @@
+{
+  "platform": "microsoft_teams",
+  "integration": "teams_bot_events",
+  "required_capabilities": [
+    "bot"
+  ],
+  "required_permissions": [
+    "channelMessage.Read.All",
+    "Chat.Read"
+  ],
+  "future_env_mapping": {
+    "TEAMS_BOT_APP_ID": "<app-id>",
+    "TEAMS_BOT_PASSWORD": "<secret>",
+    "TEAMS_TENANT_ID": "<tenant-id>"
+  },
+  "status": "planned"
+}

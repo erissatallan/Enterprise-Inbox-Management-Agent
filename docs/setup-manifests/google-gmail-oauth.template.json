@@ -1,0 +1,12 @@
+{
+  "client_type": "oauth_client",
+  "platform": "google_cloud",
+  "required_scopes": [
+    "https://www.googleapis.com/auth/gmail.readonly"
+  ],
+  "notes": {
+    "token_usage": "Set access token as GMAIL_ACCESS_TOKEN",
+    "runner_mode_live": "GMAIL_MODE=live",
+    "optional_query_env": "GMAIL_QUERY=newer_than:7d"
+  }
+}

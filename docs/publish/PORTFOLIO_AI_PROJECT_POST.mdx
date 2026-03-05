@@ -1,0 +1,57 @@
+---
+title: "Enterprise Inbox-to-Workflow Agent"
+slug: "enterprise-inbox-workflow-agent"
+summary: "Policy-gated AI automation that turns inbound operational requests into auditable workflow actions."
+category: "AI Projects"
+status: "Shipped"
+date: "2026-03-03"
+stack:
+  - "Node.js"
+  - "TypeScript"
+  - "Zod"
+  - "Policy Engine"
+  - "JSONL Pipelines"
+links:
+  github: "[add URL]"
+  demo: "[add URL]"
+  article: "[add URL]"
+---
+
+## Problem
+
+Operations teams handling shared inbox traffic still rely on manual triage and manual routing. The result is slower response time, inconsistent execution, and weak auditability.
+
+## What I built
+
+A deterministic, policy-gated AI workflow pipeline:
+
+- Ingest inbound messages
+- Normalize unstructured text
+- Predict intent, priority, and actions
+- Apply policy (`AUTO_EXECUTE`, `REQUIRE_REVIEW`, `DENY`)
+- Execute low-risk actions
+- Log complete decision and action trace
+
+## Business impact (baseline)
+
+- Intent accuracy: `91.67%`
+- Priority accuracy: `100%`
+- Action correctness: `100%`
+- Policy accuracy: `91.67%`
+- Auto-execute rate: `41.67%`
+- Review rate: `58.33%`
+
+## Architecture
+
+Inbound events -> Normalization -> Decision Engine -> Policy Engine -> Tool Executor / Review Queue -> Audit + Reports
+
+## Proof artifacts
+
+- `reports/demo-summary.md`
+- `reports/review-queue.md`
+- `reports/eval-report.md`
+- `logs/audit.jsonl`
+
+## Why this matters
+
+This project demonstrates a practical path to enterprise AI adoption: measurable operations gains with controlled autonomy and governance baked in.

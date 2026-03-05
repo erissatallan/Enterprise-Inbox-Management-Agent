@@ -1,0 +1,17 @@
+{
+  "platform": "azure_ad",
+  "integration": "outlook_graph_mail",
+  "required_application_permissions": [
+    "Mail.Read"
+  ],
+  "required_delegated_permissions": [
+    "Mail.Read"
+  ],
+  "future_env_mapping": {
+    "GRAPH_TENANT_ID": "<tenant-id>",
+    "GRAPH_CLIENT_ID": "<client-id>",
+    "GRAPH_CLIENT_SECRET": "<client-secret>",
+    "GRAPH_MAILBOX_USER": "<target-user@domain.com>"
+  },
+  "status": "planned"
+}
