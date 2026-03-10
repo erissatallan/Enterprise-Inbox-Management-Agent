@@ -1,3 +1,18 @@
+/docs/publish
+/docs/ARCHITECTURE.md
+/docs/ARCHITECTURE_DIAGRAM.md
+/docs/ARTICLE_OUTLINE.md
+/docs/CODE_EXECUTION_PATH.md
+/docs/CYCLE2_IMPLEMENTATION_PLAN.md
+/docs/CYCLE2_INTEGRATIONS.md
+/docs/DATASET_PLAN.md
+/docs/DECISION_EXAMPLES.md
+/docs/DEMO_RUNBOOK.md
+/docs/IMPLEMENTATION_PLAN.md
+/docs/NEXT_STEPS.md
+/docs/PORTFOLIO_PAGE_COPY.md
+/docs/PROJECT_BRIEF.md
+/docs/TECH_DECICIONS.ms
 /logs
 /node_modules
 /reports/demo-summary.md
@@ -5,3 +20,4 @@
 .env.local
 .env.*
 !.env.example
+.gitignore
