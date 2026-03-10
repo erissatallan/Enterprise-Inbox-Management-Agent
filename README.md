@@ -89,6 +89,8 @@ Auto-reply actions are recorded as `stage: "gmail_reply"` in `logs/audit-gmail-l
 Use synthetic inbox events in this repository. Keep connectors modular so Slack/Gmail/Outlook/Jira/CRM live adapters can be added with limited core changes.
 
 
+
+
 # Installation Tutorial (Workplace Setup Guide)
 
 This guide is for non-technical users who want to set up this system in a workplace.
