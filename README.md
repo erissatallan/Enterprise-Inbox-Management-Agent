@@ -86,10 +86,9 @@ Auto-reply actions are recorded as `stage: "gmail_reply"` in `logs/audit-gmail-l
 
 ## MVP boundary
 
-Use synthetic inbox events in this repository. Keep connectors modular so Slack/Gmail/Outlook/Jira/CRM live adapters can be added with limited core changes.
-
-
-
+Use synthetic inbox events in this repository. Keep connectors modular so Slack/Gmail/Outlook/Jira/CRM live adapters can be added with limited core changes.  
+  
+  
 
 # Installation Tutorial (Workplace Setup Guide)
 
