@@ -12,7 +12,7 @@ const validationRecordSchema = z.object({
   message: inboundMessageSchema,
   expected_intent: z.string(),
   expected_priority: z.enum(["low", "medium", "high"]),
-  expected_primary_tool: z.enum(["create_task", "draft_reply", "update_record"]),
+  expected_primary_tool: z.enum(["create_task", "draft_reply", "reply", "update_record"]),
   expected_policy: z.enum(["AUTO_EXECUTE", "REQUIRE_REVIEW", "DENY"]).optional(),
 });
 

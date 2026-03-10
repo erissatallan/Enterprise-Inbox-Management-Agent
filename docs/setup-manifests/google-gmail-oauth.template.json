@@ -2,11 +2,14 @@
   "client_type": "oauth_client",
   "platform": "google_cloud",
   "required_scopes": [
-    "https://www.googleapis.com/auth/gmail.readonly"
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.send"
   ],
   "notes": {
     "token_usage": "Set access token as GMAIL_ACCESS_TOKEN",
     "runner_mode_live": "GMAIL_MODE=live",
+    "reply_mode_env": "GMAIL_REPLY_MODE=mock|live",
+    "reply_allowlist_env": "GMAIL_REPLY_ALLOWLIST=sender@example.com",
     "optional_query_env": "GMAIL_QUERY=newer_than:7d"
   }
 }

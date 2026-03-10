@@ -19,7 +19,7 @@ export const normalizedMessageSchema = z.object({
   thread_context: z.string().optional(),
 });
 
-export const toolNameSchema = z.enum(["create_task", "draft_reply", "update_record"]);
+export const toolNameSchema = z.enum(["create_task", "draft_reply", "reply", "update_record"]);
 
 export const toolActionSchema = z.object({
   tool_name: toolNameSchema,

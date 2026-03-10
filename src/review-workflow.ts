@@ -15,7 +15,7 @@ export const reviewItemSchema = z.object({
   policy_reason: z.string(),
   proposed_actions: z.array(
     z.object({
-      tool_name: z.enum(["create_task", "draft_reply", "update_record"]),
+      tool_name: z.enum(["create_task", "draft_reply", "reply", "update_record"]),
       args: z.record(z.string(), z.union([z.string(), z.number(), z.boolean()])),
     }),
   ),

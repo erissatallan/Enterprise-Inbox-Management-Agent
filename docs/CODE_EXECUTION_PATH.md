@@ -71,9 +71,13 @@ Command (mock mode):
 ```bash
 npm run gmail:live
 ```
-Command (live Gmail API mode):
+Command (live Gmail ingestion only):
 ```bash
-GMAIL_MODE=live GMAIL_ACCESS_TOKEN=... GMAIL_QUERY='newer_than:7d' npm run gmail:live
+GMAIL_MODE=live GMAIL_REPLY_MODE=mock GMAIL_ACCESS_TOKEN=... GMAIL_QUERY='newer_than:7d' npm run gmail:live
+```
+Command (controlled live Gmail reply):
+```bash
+GMAIL_MODE=live GMAIL_REPLY_MODE=live GMAIL_ACCESS_TOKEN=... GMAIL_QUERY='subject:"[AGENT-LIVE-TEST]" newer_than:1d' GMAIL_REPLY_ALLOWLIST='your-test-sender@example.com' npm run gmail:live
 ```
 
 ### E) Business handoff demo (ticketing + CRM)

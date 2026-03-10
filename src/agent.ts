@@ -34,7 +34,7 @@ function ruleBasedDecision(message: NormalizedMessage): AgentDecision {
       entities: {},
       proposed_actions: [
         { tool_name: "create_task", args: { queue: "engineering-support", severity: "high" } },
-        { tool_name: "draft_reply", args: { template: "incident_ack" } },
+        { tool_name: "reply", args: { template: "incident_ack" } },
       ],
     };
     confidence = 0.86;
@@ -58,7 +58,7 @@ function ruleBasedDecision(message: NormalizedMessage): AgentDecision {
       intent_label: "general_info",
       priority_label: "low",
       entities: {},
-      proposed_actions: [{ tool_name: "draft_reply", args: { template: "general_info" } }],
+      proposed_actions: [{ tool_name: "reply", args: { template: "general_info" } }],
     };
     confidence = 0.62;
     rationale = "Fallback decision due to weak intent cues.";

@@ -33,11 +33,14 @@ export async function executeToolAction(action: ToolAction, messageId = "unknown
       };
     }
     case "draft_reply":
+    case "reply": {
+      const template = coerceString(action.args.template, "default");
       return {
         tool_name: action.tool_name,
         ok: true,
-        detail: `Reply drafted with template=${coerceString(action.args.template, "default")}`,
+        detail: `Reply prepared with template=${template}`,
       };
+    }
     case "update_record": {
       const status = coerceString(action.args.status, "open");
       const handoff = await updateCrm({

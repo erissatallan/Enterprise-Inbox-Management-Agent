@@ -1,14 +1,18 @@
 # Gmail Live Ingestion Demo
 
-Generated at: 2026-03-04T16:49:12.399Z
-Mode: mock
+Generated at: 2026-03-10T07:48:45.664Z
+Mode: live
+Reply mode: live
+Query: subject:"[AGENT-LIVE-TEST] Access request to payroll data" newer_than:1d
 
 ## Results
 
-- Total: 3
-- Auto-execute: 2 (66.67%)
-- Require review: 1 (33.33%)
+- Total: 1
+- Auto-execute: 0 (0.00%)
+- Require review: 1 (100.00%)
 - Deny: 0 (0.00%)
+- Replies sent: 0
+- Replies skipped: 0
 
 ## Artifacts
 

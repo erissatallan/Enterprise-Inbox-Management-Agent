@@ -455,8 +455,10 @@ SLACK_OUTBOUND_MODE=live npm run slack:live
 Use this setup file:
 - `docs/setup-manifests/google-gmail-oauth.template.json`
 
-Required value:
+Required values:
 - `GMAIL_ACCESS_TOKEN`
+- `GMAIL_REPLY_MODE` (`mock` or `live`)
+- `GMAIL_REPLY_ALLOWLIST` (comma-separated emails; required when reply mode is `live`)
 
 Mock mode first:
 
@@ -464,11 +466,22 @@ Mock mode first:
 npm run gmail:live
 ```
 
-Live mode:
+Live ingestion only (no outbound reply):
 
 ```bash
-GMAIL_MODE=live GMAIL_ACCESS_TOKEN=... GMAIL_QUERY='newer_than:7d' npm run gmail:live
+GMAIL_MODE=live GMAIL_REPLY_MODE=mock GMAIL_ACCESS_TOKEN=... GMAIL_QUERY='newer_than:7d' npm run gmail:live
 ```
+
+Controlled live reply mode:
+
+```bash
+GMAIL_MODE=live GMAIL_REPLY_MODE=live GMAIL_ACCESS_TOKEN=... GMAIL_QUERY='subject:"[AGENT-LIVE-TEST]" newer_than:1d' GMAIL_REPLY_ALLOWLIST='your-test-sender@example.com' npm run gmail:live
+```
+
+Expected live-reply behavior:
+- Auto-execute + `reply` action: Gmail reply is sent in-thread
+- Review/deny outcomes: no Gmail reply is sent
+- Reply events are logged under `stage: "gmail_reply"` in `logs/audit-gmail-live.jsonl`
 
 ## Jira / Linear Ticketing Handoff (Available now)
 
@@ -597,6 +610,11 @@ If Slack live server fails with `EADDRINUSE` (port already in use):
 
 If Gmail live mode fails:
 - Check `GMAIL_ACCESS_TOKEN` validity and permissions
+
+If Gmail live reply mode sends no replies:
+- Confirm `GMAIL_REPLY_MODE=live`
+- Confirm `GMAIL_REPLY_ALLOWLIST` contains the sender email
+- Confirm message policy outcome is `AUTO_EXECUTE` and action includes `reply`
 
 If handoff fails in live mode:
 - Check `BUSINESS_HANDOFF_MODE=live`

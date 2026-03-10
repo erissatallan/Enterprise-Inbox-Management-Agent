@@ -13,7 +13,7 @@ export type PipelineResult = {
   policy_decision: "AUTO_EXECUTE" | "REQUIRE_REVIEW" | "DENY";
   policy_reason: string;
   proposed_actions: Array<{
-    tool_name: "create_task" | "draft_reply" | "update_record";
+    tool_name: "create_task" | "draft_reply" | "reply" | "update_record";
     args: Record<string, string | number | boolean>;
   }>;
   tool_results: ToolExecutionResult[];

@@ -41,3 +41,18 @@ rg -n "tool_execution|policy|decision" logs/audit-slack-live.jsonl | tail -n 20
 - Show controlled autonomy: low-risk/high-confidence requests auto-execute with a traceable reference.
 - Show governance: uncertain requests route to human review and explicitly notify accountable owners.
 - End with measurable value: reduced response time plus auditable controls.
+
+## Gmail Live Capture (Reply Tool)
+
+Use this when you want screenshot evidence of true email replies from the agent.
+
+Command:
+```bash
+GMAIL_MODE=live GMAIL_REPLY_MODE=live GMAIL_ACCESS_TOKEN=... GMAIL_QUERY='subject:"[AGENT-LIVE-TEST]" newer_than:1d' GMAIL_REPLY_ALLOWLIST='your-test-sender@example.com' npm run gmail:live
+```
+
+Capture these artifacts:
+- Original inbound test email in Gmail
+- Outbound agent reply in the same thread
+- `reports/gmail-live-demo.json` showing `replies_sent`
+- `logs/audit-gmail-live.jsonl` lines with `stage:"gmail_reply"` and `sent:true`
